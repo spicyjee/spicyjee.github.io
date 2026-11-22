@@ -1,0 +1,11 @@
+---
+layout: default
+title: 영화별 글
+permalink: /films/
+---
+<div class="archive-header"><p class="eyebrow">ARCHIVE</p><h1>영화</h1><p>작품을 중심으로 모아 보는 비평과 기록</p></div>
+{% assign groups = site.posts | group_by: 'film' | sort: 'name' %}
+{% for group in groups %}
+<section class="archive-group"><h2>{{ group.name | escape }} <small>{{ group.items.size }}편</small></h2>
+<ul>{% for post in group.items %}<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span>{{ post.section_label | escape }}</span></li>{% endfor %}</ul></section>
+{% endfor %}

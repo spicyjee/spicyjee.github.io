@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="article">
+  <a class="back-link" href="{{ '/' | relative_url }}">← 전체 글로 돌아가기</a>
+  <div class="article-kicker">{{ page.section_label | default: '글' | escape }}</div>
+  <h1>{{ page.title | escape }}</h1>
+  {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
+  <div class="article-meta">
+    <span>글 {{ page.author | default: site.author_name | escape }}</span><span>{{ page.date | date: '%Y.%m.%d' }}</span>
+    {% if page.film %}<span>영화 《{{ page.film | escape }}》{% if page.year %} ({{ page.year }}){% endif %}</span>{% endif %}
+    {% if page.director %}<span>감독 {{ page.director | escape }}</span>{% endif %}
+  </div>
+  <div class="article-body">{{ content }}</div>
+  <div class="article-end"><a href="{{ '/' | relative_url }}">다른 글 읽기 →</a></div>
+</article>

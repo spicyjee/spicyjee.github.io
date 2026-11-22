@@ -1,0 +1,18 @@
+새 글 파일명 예시: 2026-11-22-hula-girls.md
+주의: 이 파일은 설명용 TXT입니다. 게시되지 않습니다.
+
+---
+title: "익숙한 이야기에도 감동하는 이유"
+date: 2026-11-22 12:00:00 +0900
+author: "암전"
+section: criticism
+section_label: "비평"
+film: "훌라걸스"
+year: 2006
+director: "이상일"
+tone: amber
+---
+
+## 첫 번째 소제목
+
+실제 원고를 작성하세요.

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ko' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <title>{% if page.url == '/' %}{{ site.title | escape }}{% else %}{{ page.title | escape }} · {{ site.title | escape }}{% endif %}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="mark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} 홈"><span>암</span></a>
+      <div class="identity">
+        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+        <p class="tagline">{{ site.description | escape }}</p>
+        <p class="counts">글 <strong>{{ site.posts.size }}</strong>편 · 영화 <strong>{% assign unique_films = site.posts | map: 'film' | uniq %}{{ unique_films.size }}</strong>편</p>
+      </div>
+    </header>
+    <nav class="main-nav" aria-label="주 메뉴">
+      <a href="{{ '/' | relative_url }}" data-filter="all">전체</a>
+      <a href="{{ '/' | relative_url }}#feature" data-filter="feature">특집기획</a>
+      <a href="{{ '/' | relative_url }}#criticism" data-filter="criticism">비평</a>
+      <a href="{{ '/' | relative_url }}#essay" data-filter="essay">칼럼·에세이</a>
+      <a href="{{ '/' | relative_url }}#review" data-filter="review">리뷰</a>
+      <a href="{{ '/films/' | relative_url }}" {% if page.permalink == '/films/' %}aria-current="page"{% endif %}>영화</a>
+      <a href="{{ '/authors/' | relative_url }}" {% if page.permalink == '/authors/' %}aria-current="page"{% endif %}>필자</a>
+    </nav>
+    <main class="content" id="main">{{ content }}</main>
+    <footer class="site-footer">© {{ 'now' | date: '%Y' }} {{ site.title | escape }} · 모든 글의 저작권은 필자에게 있습니다.</footer>
+  </div>
+</body>
+</html>

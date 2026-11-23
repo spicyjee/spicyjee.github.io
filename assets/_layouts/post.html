@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{% assign info = site.data.films[page.film_ref] %}
+{% assign film_title = page.film | default: info.title %}
+{% assign film_year = page.year | default: info.year %}
+{% assign film_director = page.director | default: info.director %}
+{% assign film_cover = page.cover | default: info.cover %}
+{% assign display_section = page.section_label %}
+{% if display_section == nil or display_section == '' %}{% case page.section %}{% when 'feature' %}{% assign display_section = '특집기획' %}{% when 'criticism' %}{% assign display_section = '비평' %}{% when 'essay' %}{% assign display_section = '칼럼·에세이' %}{% when 'review' %}{% assign display_section = '리뷰' %}{% else %}{% assign display_section = '글' %}{% endcase %}{% endif %}
+<article class="article">
+  <a class="back-link" href="{{ '/' | relative_url }}">← 전체 글로 돌아가기</a>
+  <div class="article-kicker">{{ display_section | escape }}</div>
+  <h1>{{ page.title | escape }}</h1>
+  {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
+  <div class="article-meta">
+    <span>글 {{ page.author | default: site.author_name | escape }}</span><span>{{ page.date | date: '%Y.%m.%d' }}</span>
+    {% if film_title %}<span>영화 《{{ film_title | escape }}》{% if film_year %} ({{ film_year }}){% endif %}</span>{% endif %}
+    {% if film_director %}<span>감독 {{ film_director | escape }}</span>{% endif %}
+  </div>
+  {% if film_cover %}<figure class="article-cover"><img src="{{ film_cover | relative_url }}" alt="{{ film_title | default: page.title | escape }} 대표 이미지" loading="lazy"></figure>{% endif %}
+  <div class="article-body">{{ content }}</div>
+  <div class="article-end"><a href="{{ '/' | relative_url }}">다른 글 읽기 →</a></div>
+</article>

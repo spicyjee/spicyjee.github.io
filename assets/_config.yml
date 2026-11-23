@@ -1,0 +1,22 @@
+title: 암전
+description: 불이 꺼진 뒤에도 나는 영화에 대해 씁니다.
+url: ''
+baseurl: ''
+lang: ko
+markdown: kramdown
+permalink: /writing/:title/
+timezone: Asia/Seoul
+future: false
+author_name: 암전
+collections: {}
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: post
+exclude:
+- README.md
+- Gemfile
+- Gemfile.lock
+- 설치안내.txt

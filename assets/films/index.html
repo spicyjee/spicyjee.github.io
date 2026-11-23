@@ -1,0 +1,14 @@
+---
+layout: default
+title: 영화별 글
+permalink: /films/
+---
+<div class="archive-header"><p class="eyebrow">ARCHIVE</p><h1>영화</h1><p>작품을 중심으로 모아 보는 비평과 기록</p></div>
+{% assign groups = '' | split: ',' %}
+{% for post in site.posts %}{% assign film_info = site.data.films[post.film_ref] %}{% assign film_title = post.film | default: film_info.title %}{% unless groups contains film_title %}{% assign groups = groups | push: film_title %}{% endunless %}{% endfor %}
+{% assign groups = groups | sort %}
+{% for group in groups %}
+<section class="archive-group"><h2>{{ group | escape }}</h2><ul>
+{% for post in site.posts %}{% assign film_info = site.data.films[post.film_ref] %}{% assign film_title = post.film | default: film_info.title %}{% if film_title == group %}<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span>{{ post.section_label | escape }}</span></li>{% endif %}{% endfor %}
+</ul></section>
+{% endfor %}

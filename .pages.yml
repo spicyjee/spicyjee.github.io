@@ -1,0 +1,103 @@
+# 암전 Pages CMS 구성 — 기존 _posts 글은 수정/삭제하지 않습니다.
+media:
+  input: assets/images
+  output: /assets/images
+  rename: safe
+  categories: [image]
+
+content:
+  - name: writing
+    label: 영화 글 관리
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{title}.md"
+    exclude: ["NEW-POST-EXAMPLE.txt"]
+    view:
+      primary: title
+      fields: [title, date, section, film, author]
+      sort: [date, title]
+      search: [title, film, author, director]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 글 제목
+        type: string
+        required: true
+      - name: date
+        label: 게시일과 시간
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss xxx"
+      - name: author
+        label: 필자
+        type: string
+      - name: section
+        label: 분류 (영문 내부값)
+        type: select
+        required: true
+        options:
+          values:
+            - name: feature
+              label: 특집기획
+            - name: criticism
+              label: 비평
+            - name: essay
+              label: 칼럼·에세이
+            - name: review
+              label: 리뷰
+      - name: section_label
+        label: 카드에 표시할 한국어 분류명
+        type: select
+        required: true
+        description: '윗줄의 분류와 일치하게 고르세요. 기존 템플릿은 이 값을 카드에 표시합니다.'
+        options:
+          values: [특집기획, 비평, 칼럼·에세이, 리뷰]
+      - name: film
+        label: 영화 제목
+        type: string
+      - name: year
+        label: 영화 개봉 연도
+        type: number
+        options:
+          min: 1880
+          max: 2100
+      - name: director
+        label: 감독
+        type: string
+      - name: tone
+        label: 카드 배경색
+        type: select
+        description: '현재 템플릿에서 정의된 색상 중 하나를 고르세요.'
+        options:
+          values:
+            - name: amber
+              label: 황갈색
+            - name: violet
+              label: 보라색
+            - name: green
+              label: 녹색
+            - name: blue
+              label: 남색
+            - name: olive
+              label: 올리브색
+            - name: teal
+              label: 청록색
+            - name: red
+              label: 빨간색
+            - name: gray
+              label: 회색
+      - name: subtitle
+        label: 부제 (선택)
+        type: string
+      - name: body
+        label: 본문 작성
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true

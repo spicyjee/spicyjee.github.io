@@ -69,6 +69,11 @@ content:
       - name: director
         label: 감독
         type: string
+      - name: cover
+        label: 카드 대표 이미지 (선택)
+        type: image
+        options:
+          extensions: [jpg, jpeg, png, webp, gif]
       - name: tone
         label: 카드 배경색
         type: select

@@ -19,3 +19,5 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  
+# Rebuild site after scheduled post date

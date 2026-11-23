@@ -4,7 +4,7 @@ url: "" # 사용자 도메인 연결 시 주소 (예: https://username.github.io
 baseurl: "" # 사용자 사이트에서는 비워 두세요. 프로젝트 사이트라면 /저장소이름
 lang: ko
 markdown: kramdown
-permalink: /writing/:title/
+permalink: /writing/:year/:month/:day/:title/
 timezone: Asia/Seoul
 future: false
 author_name: "암전"

@@ -12,3 +12,19 @@
 .article-cover{margin:20px 0 28px}.article-cover img{max-width:100%;width:100%;height:auto;display:block;border-radius:5px}
 .article-body img{max-width:100%;height:auto;display:block;margin:24px auto;border-radius:5px}
 .article-body figure{margin:28px 0;text-align:center}.article-body figcaption{font-size:.86rem;color:#b8aba7;margin-top:8px}
+
+/* 카드 제목을 하단에 배치 */
+.post-card {
+  justify-content: flex-start;
+}
+
+/* 제목을 영화 정보 바로 위로 이동 */
+.post-card h3 {
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+/* 하단 영화 정보 */
+.card-bottom {
+  margin-top: 0;
+}
